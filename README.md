@@ -42,7 +42,7 @@ Perform a service and version scan using Nmap to determine which services are up
 
 -Run the Nmap command that performs a service and version scan against the target.
 
-..* **Answer:** nmap -sV 192.168.0.20
+> **Answer:** nmap -sV 192.168.0.20
 
  ![nmap](Screenshots/nmap_command.png)
 
