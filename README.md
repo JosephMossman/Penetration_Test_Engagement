@@ -6,6 +6,8 @@ In this activity, I played the role of an independent penetration tester hired b
 
 JosephMossman@GoodSecurity.com
 
+[Report](Resources/Report.docx)
+
 ### 1.0 High-Level Summary
 
 GoodSecurity was tasked with performing an internal penetration test on GoodCorp’s CEO, Hans Gruber. An internal penetration test is a dedicated attack against internally connected systems. The focus of this test is to perform attacks, similar to those of a hacker and attempt to infiltrate Hans’ computer and determine if it is at risk. GoodSecurity’s overall objective was to exploit any vulnerable software and find the secret recipe file on Hans’ computer, while reporting the findings back to GoodCorp.
