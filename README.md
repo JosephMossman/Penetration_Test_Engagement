@@ -6,7 +6,7 @@ In this activity, I played the role of an independent penetration tester hired b
 
 JosephMossman@GoodSecurity.com
 
-[Report](Resources/Report.docx)
+[Report Deliverable](Resources/Report.docx)
 
 ### 1.0 High-Level Summary
 
